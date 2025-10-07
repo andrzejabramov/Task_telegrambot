@@ -1,10 +1,18 @@
 from telebot import types
-from bot_instance import bot
+from src.bot.bot_instance import bot
 from src.api.crypto_compare import get_price
+from src.utils.data import notice, keys
 
-@bot.message_handler(commands=['start'])
-def send_welcome(message):
-    bot.reply_to(message, "Привет! Используй /price <FROM> <TO>, например: /price BTC USD")
+@bot.message_handler(commands=['start', 'help'])
+def get_describe(message):
+    bot.reply_to(message, notice['describe'])
+
+@bot.message_handler(commands=['values'])
+def get_currencies(message):
+    text = 'Доступные валюты:'
+    for key in keys.keys():
+        text = '\n'.join((text, key,))
+    bot.reply_to(message, text)
 
 @bot.message_handler(commands=['price'])
 def handle_price(message):
