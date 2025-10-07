@@ -13,5 +13,11 @@ notice = {
 <количество переводимой валюты>.\n \
 Между вводимыми данными - пробел\n \
 Увидеть список всех доступных валют:\n/values',
-    'ETH': 'Ethereum',
+}
+
+valid_commands = {
+    'start': 'start',
+    'help': 'help',
+    'values': 'values',
+    'price': 'price',
 }

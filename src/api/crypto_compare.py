@@ -1,5 +1,5 @@
 import requests
-from src.utils.data import URL
+from src.models.data import URL
 
 def get_price(from_symbol: str, to_symbol: str) -> float:
     url = URL
