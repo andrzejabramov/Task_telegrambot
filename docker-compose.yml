@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  telebot:
+    build: .
+    env_file:
+      - .env
+    restart: unless-stopped
+    # Опционально: логи в реальном времени
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
