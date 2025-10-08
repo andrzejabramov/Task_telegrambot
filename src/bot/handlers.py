@@ -1,4 +1,5 @@
 import telebot
+from loguru import logger
 from src.bot.bot_instance import bot
 from src.utils.extensions import CryptoConverter, ConvertionException
 from src.models.data import notice, keys, valid_commands
@@ -29,12 +30,17 @@ def unknown_command(message):
 
 @bot.message_handler(content_types=['text', ])
 def convert_message(message: telebot.types.Message):
+    user = f"@{message.from_user.username}" if message.from_user.username else f"ID{message.from_user.id}"
+    logger.info(f"Получено сообщение от {user}: {message.text!r}")
     try:
         text = CryptoConverter.valid_data(message.text)
+        bot.send_message(message.chat.id, text)
+        logger.success(f"Успешный расчёт для {user}: {message.text!r} → {text}")
     except ConvertionException as e:
         bot.reply_to(message, f'{notice['user_err']}\n{e}')
+        logger.warning(f"Ошибка пользователя {user}: {e} (ввод: {message.text!r})")
     except Exception as e:
         bot.reply_to(message, f'{notice['server_err']}\n{e}')
-    else:
-       bot.send_message(message.chat.id, text)
+        logger.exception(f"Критическая ошибка при обработке сообщения от {user}: {message.text!r}")
+
 
