@@ -50,3 +50,8 @@ crypto-compare-bot/
    ```env
    TELEGRAM_BOT_TOKEN=ваш_токен_от_BotFather
    
+## Результат работы:
+
+![page1](https://github.com/andrzejabramov/Task_telegrambot/blob/master/img/Снимок%20экрана%202025—10—08%20в%2017.34.13.jpeg.png)
+![page2](https://github.com/andrzejabramov/Task_telegrambot/blob/master/img/Снимок%20экрана%202025—10—08%20в%2017.35.48.jpeg.png)
+![page3](https://github.com/andrzejabramov/Task_telegrambot/blob/master/img/Снимок%20экрана%202025—10—08%20в%2017.36.21.jpeg.png)
